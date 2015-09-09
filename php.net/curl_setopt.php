@@ -17,10 +17,10 @@
     // close cURL resource, and free up system resources
     curl_close($ch);
 
-
     $data['name'] = tag_content($html, '<h1 id="page-title" class="header-small m-v-n" itemprop="name">', "</h1>");
     function tag_content($html, $start, $end)
     {
+        str_replace($start, "", strstr($html, $start)); //html after <h1..> then remove <h1..>
         return strstr($html, $end, true); //html before </h1>
     }
     print_r($data); 
